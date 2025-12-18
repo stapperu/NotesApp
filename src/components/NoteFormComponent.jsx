@@ -1,15 +1,17 @@
 import { useState, useEffectEvent } from "react";
-// alternative with each state separate, requires changing onChange to "onChange={(e)=>{setPriority(e.target.value)}}" and value to whatever the state is instead of "formData.x"
-const NoteFormComponent = () => {
+
+
+
+const NoteFormComponent = ({notes,setNotes}) => {    
+    // alternative with each state separate, requires changing onChange to "onChange={(e)=>{setPriority(e.target.value)}}" and value to whatever the state is instead of "formData.x"
 //     const [title,setTitle]=useState();
 //     const [priority,setPriority]=useState('Medium');
 //     const [category,setCategory]=useState('Work');
 //     const [description,setDescription]=useState(''); }
-
 const [formData, setFormData] = useState({
 	title: "",
-	priority: "",
-	category: "",
+	priority: "Medium",
+	category: "Work",
 	description: "",
 });
 const handleChange = (e) => {
@@ -19,11 +21,28 @@ const handleChange = (e) => {
 	});
 };
 
+const handleSubmit=(e)=>{
+    e.preventDefault();
+    if(!formData.title || !formData.description) return;
+
+    //  ATTENTION! Date.now() is NOT a solution suitable for production ! Only as a temporary fix in absence of database which would produce id's 
+    const newNote={id: Date.now(), ...formData};
+
+    setNotes([newNote, ...notes])
+
+    setFormData ({
+        	title: "",
+	priority: "",
+	category: "",
+	description: "",
+    });
+}
+
 return (
 	<>
 		<form
 			className="mb-6 p-4 pb-8 bg-gray-100 shadow-lg shadow-gray-100"
-			action=""
+			onSubmit={handleSubmit}
 		>
 			<div className="mb-4">
 				<label htmlFor="name" className=" text-center text-md font-bold block">
@@ -82,7 +101,7 @@ return (
 					onChange={handleChange}
 				/>{" "}
 			</div>
-			<button className="block mx-auto p-6 text-xl rounded-md bg-amber-300 hover:bg-amber-400 text-white">
+			<button className="block mx-auto p-6 text-xl rounded-md bg-amber-400 hover:bg-amber-500 text-white" >
 				Add Note
 			</button>
 		</form>

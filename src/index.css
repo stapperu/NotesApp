@@ -3,3 +3,9 @@
 body {
   @apply bg-amber-200;
 }
+
+
+
+.class {
+border: solid 2px black;
+}
