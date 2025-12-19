@@ -41,7 +41,7 @@ const handleSubmit=(e)=>{
 return (
 	<>
 		<form
-			className="mb-6 p-4 pb-8 bg-gray-100 shadow-lg shadow-gray-100"
+			className="mb-6 p-4 pb-8 bg-amber-50 shadow-lg shadow-gray-100"
 			onSubmit={handleSubmit}
 		>
 			<div className="mb-4">
@@ -49,7 +49,7 @@ return (
 					Title
 				</label>
 				<input
-					className="bg-amber-50 border-b block mx-auto my-2 w-full max-w-80"
+					className="bg-white border-b border-amber-500 block mx-auto my-2 w-full max-w-80"
 					name="title"
 					type="text"
 					value={formData.title}
@@ -61,7 +61,7 @@ return (
 					Priority
 				</label>
 				<select
-					className="bg-amber-50 border-b- mx-auto my-2 w-full"
+					className="bg-white border-b border-amber-500 mx-auto my-2 w-full"
 					type="text"
 					name="priority"
 					value={formData.priority}
@@ -77,7 +77,7 @@ return (
 					Category
 				</label>
 				<select
-					className="bg-amber-50 border-b mx-auto my-2 w-full"
+					className="bg-white border-b border-amber-500 mx-auto my-2 w-full"
 					type="text"
 					name="category"
 					value={formData.category}
@@ -93,7 +93,7 @@ return (
 					Description
 				</label>
 				<textarea
-					className="bg-amber-50 border-b mx-auto my-2 w-full"
+					className="bg-white border-b border-amber-500 mx-auto my-2 w-full"
 					type="text"
 					rows="5"
 					name="description"
@@ -101,7 +101,7 @@ return (
 					onChange={handleChange}
 				/>{" "}
 			</div>
-			<button className="block mx-auto p-6 text-xl rounded-md bg-amber-400 hover:bg-amber-500 text-white" >
+			<button className="block mx-auto p-6 text-xl rounded-md bg-amber-400 hover:bg-white0 text-white" >
 				Add Note
 			</button>
 		</form>
