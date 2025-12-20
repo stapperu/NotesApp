@@ -6,6 +6,7 @@ const NoteFormComponent = ({ notes, setNotes }) => {
 	//     const [priority,setPriority]=useState('Medium');
 	//     const [category,setCategory]=useState('Work');
 	//     const [description,setDescription]=useState(''); }
+	const [error, setError] = useState("");
 	const [formData, setFormData] = useState({
 		title: "",
 		priority: null,
@@ -21,7 +22,17 @@ const NoteFormComponent = ({ notes, setNotes }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (!formData.title || !formData.description || !formData.category || !formData.priority) return confirm("Missing form fields");
+		if (
+			!formData.title ||
+			!formData.description ||
+			!formData.category ||
+			!formData.priority
+		) {
+			setError("Please fill out all fields");
+			return;
+		}
+
+		setError("");
 
 		//  ATTENTION! Date.now() is NOT a solution suitable for production ! Only as a temporary fix in absence of database which would produce id's
 		const newNote = { id: Date.now(), ...formData };
@@ -38,9 +49,15 @@ const NoteFormComponent = ({ notes, setNotes }) => {
 
 	return (
 		<>
+			{error && (
+				<div className="modal max-w-lg h-auto rounded-md bg-red-800 text-white z-10 block p-2 text-center ">
+					<p>{error}</p>
+				</div>
+			)}
 			<form
 				className="mb-6 p-4 pb-8 bg-amber-50 shadow-lg shadow-gray-100 "
-				onSubmit={handleSubmit} id="noteform"
+				onSubmit={handleSubmit}
+				id="noteform"
 			>
 				<div className="mb-4">
 					<label
