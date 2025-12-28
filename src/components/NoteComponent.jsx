@@ -5,7 +5,7 @@ const NoteComponent = ({note, deleteNote}) => {
 	return (
 		<div className="p-4 m-2 bg-amber-50 rounded-lg shadow-md border-l-8 border-amber-400"
 		style={{borderLeftColor: note.priority=="High" ? "red" : note.priority=="Medium" ? "yellow" : "green"}}>
-			<button className="cursor-pointer hover:bg-red-600 justify-self-end rounded-4xl flex justify-center leading-3 align-center w-5 h-5 bg-red-400 text-black m-1 p-0.5" onClick={()=>deleteNote(note.id)}>x</button>
+			<button className="cursor-pointer hover:bg-red-600 justify-self-end rounded-4xl flex justify-center leading-3 align-center w-5 h-5 bg-gray-200 text-black m-1 p-0.5" onClick={()=>deleteNote(note.id)}>x</button>
 			<h3 className="text-xl font-bold uppercase text-amber-500">
 				{note.title}
 			</h3>
