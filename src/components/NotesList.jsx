@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NoteComponent from "./NoteComponent";
 
-const NoteList = ({ notes }) => {
+const NotesList = ({ notes, deleteNote }) => {
 	
 	if (notes.length === 0) {
 		return <p>No Notes Yet</p>;
@@ -14,7 +14,7 @@ const NoteList = ({ notes }) => {
 					List 
 				</h1>
 				{notes.map((note) => (
-					<NoteComponent note={note} key={note.id} />
+					<NoteComponent note={note} deleteNote={deleteNote} key={note.id} />
 					
 				))}
 			</div>
@@ -22,4 +22,4 @@ const NoteList = ({ notes }) => {
 	);
 };
 
-export default NoteList;
+export default NotesList;

@@ -9,8 +9,8 @@ const NoteFormComponent = ({ notes, setNotes }) => {
 	const [error, setError] = useState("");
 	const [formData, setFormData] = useState({
 		title: "",
-		priority: null,
-		category: null,
+		priority: "",
+		category: "",
 		description: "",
 	});
 	const handleChange = (e) => {
@@ -57,7 +57,6 @@ const NoteFormComponent = ({ notes, setNotes }) => {
 			<form
 				className="mb-6 p-4 pb-8 bg-amber-50 shadow-lg shadow-gray-100 "
 				onSubmit={handleSubmit}
-				id="noteform"
 			>
 				<div className="mb-4">
 					<label
