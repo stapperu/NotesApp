@@ -14,7 +14,9 @@ const App = () => {
 	useEffect(() => {
 		localStorage.setItem("notes", JSON.stringify(notes));
 	}, [notes]);
+	
 
+	
 	const deleteNote = (id) => {
 		setNotes(notes.filter((note) => note.id !== id));
 	};
