@@ -41,7 +41,7 @@ const NoteComponent = ({ note, deleteNote }) => {
 				</h6>
 				<hr></hr>
 				<p className="m-2 p-2 text-md font ">{note.description}</p>
-				{isClicked ? <TimerComponent /> : null}
+				{isClicked ? <TimerComponent note={note} /> : null}
 			</div>
 		</>
 	);

@@ -1,9 +1,19 @@
-import {useRef, useState, useEffect} from "react"
+import { useRef, useState, useEffect } from "react";
 
-const TimerComponent = ({}) => {
+const TimerComponent = ({ note }) => {
 	const timerRef = useRef(null);
-	const [count, setCount] = useState({ hours: 0, minutes: 0, seconds: 0 });
+	const [count, setCount] = useState(() => {
+		const count = JSON.parse(localStorage.getItem(`timer_${note.id}`));
+		return count || { hours: 0, minutes: 0, seconds: 0 };
+	});
 	const [isCounting, setIsCounting] = useState(false);
+
+useEffect(() => {
+						localStorage.setItem(
+							`timer_${note.id}`,
+							JSON.stringify(count)
+						);
+					}, [count]);
 
 	const toggleTimer = () => {
 		if (isCounting) {
@@ -25,7 +35,7 @@ const TimerComponent = ({}) => {
 						minutes = 0;
 						hours += 1;
 					}
-
+					
 					return { hours, minutes, seconds };
 				});
 			}, 1000);
@@ -39,12 +49,13 @@ const TimerComponent = ({}) => {
 		setCount({ hours: 0, minutes: 0, seconds: 0 });
 		timerRef.current = null;
 	};
+const formatTime = (num) => String(num).padStart(2,"0");
 
 	return (
-		<div className="p-4 ml-8 left-102 top-0 flex flex-col z-10 w-50 h-auto absolute text-center">
+		<div className="timer p-4 ml-8 left-102 top-0 flex flex-col z-10 w-50 h-auto absolute text-center">
 			<p>Timer:</p>
 			<span className="text-xl font-bold text-amber-700" ref={timerRef}>
-				{`${count.hours}:${count.minutes}:${count.seconds}`}
+				{`${formatTime(count.hours)}:${formatTime(count.minutes)}:${formatTime(count.seconds)}`}
 			</span>
 			<button
 				className=" startButton p-2 m-0.5 mt-4 uppercase font-bold rounded-md bg-green-300 "
