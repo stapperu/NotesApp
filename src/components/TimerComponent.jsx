@@ -42,7 +42,6 @@ const TimerComponent = ({}) => {
 
 	return (
 		<div className="p-4 ml-8 left-102 top-0 flex flex-col z-10 w-50 h-auto absolute text-center">
-			<button className="left-0 top-0 self-end">x</button>
 			<p>Timer:</p>
 			<span className="text-xl font-bold text-amber-700" ref={timerRef}>
 				{`${count.hours}:${count.minutes}:${count.seconds}`}
